@@ -1,0 +1,49 @@
+
+Project 4: Encoding and Decoding
+
+This project is a continuation of your last project, project-3. 
+
+In project 4, you will be doing the followings:
+
+(a) Given a text file, text_1, you are to compute the histogram of the characters in the text, and output a list of pairs <character  prob> to an output file, out1.  Out1 will be the input for the construction of sorted linked list. (The algorithm steps is given below.) Note,  prob = (count /total_count) * 100.
+
+(b) After the construction of sorted linked list, the construction of binary tree, and the construction of entropy table, you will open a second text file, text_2, and encode text_2 , based on the coding scheme in your entropy table; then, you will output the encoded text to an output file, called code_2.
+
+(c) Then, your  project 4 will re-open the file code_2, and decode code_2  and output to an output file, called decode_2.  
+
+Algorithm steps for computing the probabilities of characters in a text file:
+
+	// compute the histogram
+Step 0: Initialize the 1-D histogram/count array, size of 256, to zero.	
+                                   (Change the array size from 128 to 256)
+	
+Step 1: charStr ? get a character from text_1
+             index ? mapping the charStr from char to int 
+             Hist[index] ++
+
+Step 2: repeat step 1 until text_1 is empty
+// Output pairs
+Step 3: index ? 0
+Step 4: charStr ? mapping index to char
+Step 5: output charStr and Hist[index] as a pair to outFile
+Step 6: index ++
+Step 7: repeat step 4-6 until index >= 256
+
+
+Notes:  
+(1). char type in C++ is signed char and the integer value will fall between the range of -128 to 127. 
+In order to get the correct 0-255 range, you must either adjust offset, or just utilize unsigned char to
+parse every single character.
+ 
+(2).  For printing, when checking against specific special characters such as newlines, whitespaces, never use magic numbers for comparison, always compare against that specfic char itself, that is compare it again '\n', '\r', ... etc.
+
+(3). The sum of all the probabilities together should be 100.0! prob = (count /total_count) * 100.
+
+(4) There should be 6 outputs
+output1 - histogram output <char, probability> format
+output2 - sorted linked list output 
+output3 - binary tree output 
+output4 - entropy table 
+output5 - encoded output
+output6 - decoded output
+
